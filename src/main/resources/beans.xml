@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+	    https://www.springframework.org/schema/beans/spring-beans.xsd" default-lazy-init="true">
+
+    <!--Even though bean is singleton ,
+    For ApplicationContext container will not instantiate at the time of Container Activation
+    Because Developer needs this bean at Lazy initialization-->
+    <bean id="b" class="com.khadri.spring.core.Bean" />
+
+    <!--The dependency of Singlton bean will be instantiated at the time of start of ApplicationContext
+    ,Because it has to satisfy singleton bean scope -->
+    <bean id="std" class="com.khadri.spring.core.Student">
+        <property name="address" ref="add"/>
+    </bean>
+
+    <bean id="add" class="com.khadri.spring.core.Address" />
+
+
+
+</beans>
